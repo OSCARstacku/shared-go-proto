@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package base.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/OSCARstacku/shared-go-proto/base/v1";
+
+// -------------------------------------------------------------------
+// Base Entity message
+// -------------------------------------------------------------------
+
+message BaseEntity {
+  string _id = 1;
+  string name = 2;
+  string description = 3;
+  bool status = 4;
+  int32 age = 5;
+  int64 total = 6;
+  double price = 7;
+  repeated string tags = 8;
+  repeated int32 numbers = 9;
+  map<string, string> metadata = 10;
+  string created_by = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  google.protobuf.Timestamp deleted_at = 14;
+}
+
+// -------------------------------------------------------------------
+// Request / Response 
+// -------------------------------------------------------------------
+
+// CreateBase
+message CreateBaseReq {
+  BaseEntity data = 1;
+}
+
+message CreateBaseRes {
+  bool success = 1;
+  string message = 2;
+  BaseEntity data = 3;
+}
+
+// GetBase
+message GetBaseReq {
+  string _id = 1;
+}
+
+message GetBaseRes {
+  bool success = 1;
+  string message = 2;
+  BaseEntity data = 3;
+}
+
+// ListBase
+message ListBaseReq {
+  int32 page = 1;
+  int32 limit = 2;
+  string search = 3;
+}
+
+message ListBaseRes {
+  bool success = 1;
+  string message = 2;
+  repeated BaseEntity data = 3;
+  int64 total = 4;
+}
+
+// UpdateBase
+message UpdateBaseReq {
+  string _id = 1;
+  BaseEntity data = 2;
+}
+
+message UpdateBaseRes {
+  bool success = 1;
+  string message = 2;
+  BaseEntity data = 3;
+}
+
+// DeleteBase
+message DeleteBaseReq {
+  string _id = 1;
+}
+
+message DeleteBaseRes {
+  bool success = 1;
+  string message = 2;
+}
+
+// -------------------------------------------------------------------
+// Service gRPC
+// -------------------------------------------------------------------
+
+service BaseService {
+  rpc CreateBase(CreateBaseReq) returns (CreateBaseRes);
+  rpc GetBase(GetBaseReq) returns (GetBaseRes);
+  rpc ListBase(ListBaseReq) returns (ListBaseRes);
+  rpc UpdateBase(UpdateBaseReq) returns (UpdateBaseRes);
+  rpc DeleteBase(DeleteBaseReq) returns (DeleteBaseRes);
+}
