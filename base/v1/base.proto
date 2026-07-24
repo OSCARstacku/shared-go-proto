@@ -11,7 +11,7 @@ option go_package = "github.com/OSCARstacku/shared-go-proto/base/v1";
 // -------------------------------------------------------------------
 
 message BaseEntity {
-  string _id = 1;
+  string id = 1;
   string name = 2;
   string description = 3;
   bool status = 4;
@@ -21,17 +21,23 @@ message BaseEntity {
   repeated string tags = 8;
   repeated int32 numbers = 9;
   map<string, string> metadata = 10;
+
   string created_by = 11;
+
   google.protobuf.Timestamp created_at = 12;
   google.protobuf.Timestamp updated_at = 13;
   google.protobuf.Timestamp deleted_at = 14;
 }
 
 // -------------------------------------------------------------------
-// Request / Response 
+// Request / Response
 // -------------------------------------------------------------------
 
+
+// -------------------------------------------------------------------
 // CreateBase
+// -------------------------------------------------------------------
+
 message CreateBaseReq {
   BaseEntity data = 1;
 }
@@ -42,9 +48,13 @@ message CreateBaseRes {
   BaseEntity data = 3;
 }
 
+
+// -------------------------------------------------------------------
 // GetBase
+// -------------------------------------------------------------------
+
 message GetBaseReq {
-  string _id = 1;
+  string id = 1;
 }
 
 message GetBaseRes {
@@ -53,7 +63,11 @@ message GetBaseRes {
   BaseEntity data = 3;
 }
 
+
+// -------------------------------------------------------------------
 // ListBase
+// -------------------------------------------------------------------
+
 message ListBaseReq {
   int32 page = 1;
   int32 limit = 2;
@@ -67,9 +81,13 @@ message ListBaseRes {
   int64 total = 4;
 }
 
+
+// -------------------------------------------------------------------
 // UpdateBase
+// -------------------------------------------------------------------
+
 message UpdateBaseReq {
-  string _id = 1;
+  string id = 1;
   BaseEntity data = 2;
 }
 
@@ -79,9 +97,13 @@ message UpdateBaseRes {
   BaseEntity data = 3;
 }
 
+
+// -------------------------------------------------------------------
 // DeleteBase
+// -------------------------------------------------------------------
+
 message DeleteBaseReq {
-  string _id = 1;
+  string id = 1;
 }
 
 message DeleteBaseRes {
@@ -89,14 +111,21 @@ message DeleteBaseRes {
   string message = 2;
 }
 
+
 // -------------------------------------------------------------------
 // Service gRPC
 // -------------------------------------------------------------------
 
 service BaseService {
+
   rpc CreateBase(CreateBaseReq) returns (CreateBaseRes);
+
   rpc GetBase(GetBaseReq) returns (GetBaseRes);
+
   rpc ListBase(ListBaseReq) returns (ListBaseRes);
+
   rpc UpdateBase(UpdateBaseReq) returns (UpdateBaseRes);
+
   rpc DeleteBase(DeleteBaseReq) returns (DeleteBaseRes);
+
 }
