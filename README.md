@@ -68,4 +68,4 @@ git push origin v0.1.4
 | Array         | `repeated`                                       |
 | Object        |  otro `message`                                  |
 | Map           | `map<string,string>`                             |
-| ObjectId      | `string`                                         |
+| ObjectId      | `string`                                         |# shared-go-proto
