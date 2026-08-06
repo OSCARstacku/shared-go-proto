@@ -13,21 +13,33 @@ option go_package = "github.com/OSCARstacku/shared-go-proto/admin/v1";
 
 message AdminEntity {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  bool status = 4;
-  int32 age = 5;
-  int64 total = 6;
-  double price = 7;
-  repeated string tags = 8;
-  repeated int32 numbers = 9;
-  map<string, string> metadata = 10;
+  string created_by = 2;
+  string tipo_identificacion = 3;
+  string identificacion = 4;
+  string nombres = 5;
+  string apellidos = 6;
+  string direccion = 7;
+  string pais = 8;
+  string departamento = 9;
+  string ciudad = 10;
+  string correo = 11;
+  string contrasena = 12;
+  string indicativo_telefono = 13;
+  string telefono = 14;
+  string indicativo_whatsApp = 15;
+  string whatsApp = 16;
+  string mensaje_estado = 17;
+  string rol = 18;
+  string usuario_empresarial = 19;
+  string lenguajeUsuario = 20;
+  
+  bool bA = 21;
+  bool sU = 22;
+  bool collaborator = 23;
 
-  string created_by = 11;
-
-  google.protobuf.Timestamp created_at = 12;
-  google.protobuf.Timestamp updated_at = 13;
-  google.protobuf.Timestamp deleted_at = 14;
+  google.protobuf.Timestamp created_at = 24;
+  google.protobuf.Timestamp updated_at = 25;
+  google.protobuf.Timestamp deleted_at = 26;
 }
 
 // -------------------------------------------------------------------
